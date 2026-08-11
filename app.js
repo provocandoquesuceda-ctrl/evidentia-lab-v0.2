@@ -122,3 +122,29 @@ document.getElementById('analyze-file').addEventListener('click', async () => {
     
     document.getElementById('file-result').innerHTML = `<b>EVIDENCIA:</b> Archivo ${file.name} procesado. 3 hallazgos detectados.`;
 });
+// === BLOQUE 3: EXPORTAR A PDF ===
+document.getElementById('export-pdf').addEventListener('click', () => {
+    let ledger = JSON.parse(localStorage.getItem('evidenceLedger')) || [];
+    
+    if(ledger.length === 0) return alert('No hay evidencia para exportar CEO');
+    
+    let html = `
+    <h1>EVIDENTIA LAB™ - REPORTE OFICIAL</h1>
+    <p>Generado: ${new Date().toLocaleString()}</p>
+    <hr>
+    ${ledger.map(e => `
+        <div style="margin-bottom: 20px; border: 1px solid #ccc; padding: 10px;">
+            <p><b>Fecha:</b> ${e.timestamp}</p>
+            <p><b>Tipo:</b> ${e.type}</p>
+            <p><b>Detalle:</b> ${e.result || e.output}</p>
+        </div>
+    `).join('')}
+    `;
+    
+    let ventana = window.open('', '', 'height=600,width=800');
+    ventana.document.write('<html><head><title>Reporte</title></head><body>');
+    ventana.document.write(html);
+    ventana.document.write('</body></html>');
+    ventana.document.close();
+    ventana.print(); // Se abre para imprimir/guardar como PDF
+});
