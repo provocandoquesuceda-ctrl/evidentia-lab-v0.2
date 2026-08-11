@@ -148,3 +148,75 @@ document.getElementById('export-pdf').addEventListener('click', () => {
     ventana.document.close();
     ventana.print(); // Se abre para imprimir/guardar como PDF
 });
+// =============================================
+// === BLOQUE 4: CEREBRO WEBLLM REAL - AUREA ===
+// =============================================
+
+let engine = null; // Aquí guardamos el cerebro
+
+// FUNCIÓN 1: ENCENDER EL CEREBRO CUANDO ABRE LA PÁGINA
+async function initEngine() {
+    const runBtn = document.getElementById('run-mission');
+    runBtn.innerText = "🧠 DESCARGANDO CEREBRO... 1RA VEZ TARDA";
+    runBtn.disabled = true;
+
+    // Carga Llama 3.1. La 1ra vez descarga 4GB. Después ya está.
+    engine = await webllm.CreateMLCEngine(
+        "Llama-3.1-8B-Instruct-q4f16_1",
+        {
+            initProgressCallback: (report) => {
+                runBtn.innerText = `🧠 ${report.text}`; // Muestra % de descarga
+            }
+        }
+    );
+
+    runBtn.innerText = "RUN MISSION"; // Cuando termina
+    runBtn.disabled = false;
+    runBtn.style.background = "#22c55e"; // Se pone verde
+    console.log("Cerebro de AUREA Listo CEO");
+}
+
+// Encendemos el cerebro apenas carga la página
+initEngine();
+
+// FUNCIÓN 2: CUANDO DAN CLICK A RUN MISSION
+document.getElementById('run-mission').addEventListener('click', async () => {
+    if(!engine) {
+        alert("Espera CEO, el cerebro aún se está descargando");
+        return;
+    }
+
+    const missionInput = document.getElementById('mission-input').value;
+    const stepsDiv = document.getElementById('workflow-steps');
+
+    if(missionInput === "") {
+        alert("Escribe una misión primero");
+        return;
+    }
+
+    stepsDiv.innerHTML = '<p>🧠 AUREA PENSANDO...</p>';
+
+    // Le hablamos a AUREA
+    const messages = [
+        { role: "system", content: "Eres AUREA, la IA de EVIDENTIA LAB. Eres directa, estratégica y das 3 pasos accionables. Responde en español." },
+        { role: "user", content: `Misión: ${missionInput}. Dame 3 pasos para ejecutarla y 1 riesgo.` }
+    ];
+
+    // AUREA piensa
+    const reply = await engine.chat.completions.create({ messages });
+    const output = reply.choices[0].message.content;
+
+    // Mostramos lo que pensó
+    stepsDiv.innerHTML = `<pre style="white-space: pre-wrap; color: #22c55e;">${output}</pre>`;
+
+    // Guardamos en el Evidence Ledger
+    const entry = {
+        timestamp: new Date().toISOString(),
+        type: 'MISSION_CON_CEREBRO',
+        input: missionInput,
+        output: output
+    };
+    evidenceLedger.push(entry);
+    localStorage.setItem('evidenceLedger', JSON.stringify(evidenceLedger));
+    renderEvidence(); // Actualiza la tabla
+});
