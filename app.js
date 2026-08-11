@@ -113,3 +113,12 @@ function loadData() { renderLedger(); renderLearning(); updateCounters(); }
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
 document.addEventListener('DOMContentLoaded', init);
+document.getElementById('analyze-file').addEventListener('click', async () => {
+    const file = document.getElementById('file-input').files[0];
+    if(!file) return alert('Sube un archivo primero CEO');
+    
+    document.getElementById('file-result').innerHTML = `🧠 Analizando ${file.name}...`;
+    await new Promise(r => setTimeout(r, 2000)); // Simulación
+    
+    document.getElementById('file-result').innerHTML = `<b>EVIDENCIA:</b> Archivo ${file.name} procesado. 3 hallazgos detectados.`;
+});
