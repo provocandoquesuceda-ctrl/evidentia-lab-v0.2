@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AUREA OS — PUBLIC FIRST EVIDENCE LAB</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>AUREA OS</h1>
+    <p class="subtitle">PUBLIC FIRST EVIDENCE LAB™</p>
+    <span class="tag">PROOF OF ARCHITECTURE</span>
+    <p class="motto">From Architecture to Proof</p>
+  </header>
+
+  <main>
+    <!-- STATUS -->
+    <section class="card">
+      <h2>AUREA STATUS</h2>
+      <div class="status online">ONLINE — EVIDENCE LAB</div>
+      <div class="evidence-level">Evidence Level: <strong id="evidence-level">E1 — NAVIGABLE</strong></div>
+    </section>
+
+    <!-- SYSTEM LAYERS -->
+    <section class="card">
+      <h2>SYSTEM LAYERS</h2>
+      <div class="layers">
+        <span>Governance</span><span>Agents</span><span>Workflows</span>
+        <span>Quality Control</span><span>Evidence</span><span>Learning</span><span>Compounding</span>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="card">
+      <h2>PROJECTS</h2>
+      <div class="projects">
+        <div class="project active" data-project="aurea">AUREA OS</div>
+        <div class="project" data-project="abogado">AbogadoRD / MEJI</div>
+        <div class="project" data-project="ciber">CIBER-PUEBLO</div>
+        <div class="project" data-project="etereo">ETÉREO</div>
+      </div>
+      <small>* Representaciones Digital Twins. No conectados técnicamente aún.</small>
+    </section>
+
+    <!-- OPERATIVE DIGITAL TWIN -->
+    <section class="card">
+      <h2>OPERATIVE DIGITAL TWIN</h2>
+      <div id="twin-info">
+        <p><b>Objetivo:</b> Demostrar arquitectura mediante evidencia</p>
+        <p><b>Estado:</b> <span id="twin-status">IDLE</span></p>
+        <p><b>Capacidades:</b> Navegación, Workflow Local, Evidence Ledger, Learning Loop</p>
+      </div>
+    </section>
+
+    <!-- MISSION CONTROL -->
+    <section class="card">
+      <h2>MISSION CONTROL</h2>
+      <textarea id="mission-input" rows="3">Analizar una oportunidad y producir una recomendación estructurada.</textarea>
+      <button id="run-mission">RUN MISSION</button>
+    </section>
+
+    <!-- WORKFLOW -->
+    <section class="card">
+      <h2>WORKFLOW — DEMO / LOCAL EXECUTION</h2>
+      <div id="workflow-steps"></div>
+    </section>
+
+    <!-- AGENTS -->
+    <section class="card">
+      <h2>AGENTS</h2>
+      <div class="agents">
+        <div><b>Research Agent</b><br><span class="ready">READY</span><br><small>Investigación y estructuración</small></div>
+        <div><b>Critical Agent</b><br><span class="ready">READY</span><br><small>Desafiar supuestos</small></div>
+        <div><b>Verification Agent</b><br><span class="ready">READY</span><br><small>Comprobar consistencia</small></div>
+        <div><b>Learning Agent</b><br><span class="ready">READY</span><br><small>Extraer patrones</small></div>
+      </div>
+      <small>* Agentes funcionales locales. No conectados a LLM aún.</small>
+    </section>
+
+    <!-- QUALITY CONTROL -->
+    <section class="card">
+      <h2>QUALITY CONTROL</h2>
+      <div id="qc-output">Esperando ejecución...</div>
+      <div id="qc-gate"></div>
+    </section>
+
+    <!-- EVIDENCE LEDGER -->
+    <section class="card">
+      <h2>EVIDENCE LEDGER</h2>
+      <div id="evidence-ledger">Sin ejecuciones aún</div>
+    </section>
+
+    <!-- LEARNING -->
+    <section class="card">
+      <h2>LEARNING LOOP</h2>
+      <div id="learning-form" style="display:none">
+        <p><b>What happened?</b> <input id="l1"></p>
+        <p><b>What worked?</b> <input id="l2"></p>
+        <p><b>What failed?</b> <input id="l3"></p>
+        <p><b>What was learned?</b> <input id="l4"></p>
+        <p><b>What can be reused?</b> <input id="l5"></p>
+        <button id="save-learning">SAVE LEARNING</button>
+      </div>
+      <h3>Reusable Knowledge</h3>
+      <ul id="reusable-knowledge"></ul>
+    </section>
+
+    <!-- COMPOUNDING -->
+    <section class="card">
+      <h2>ECOSYSTEM COMPOUNDING</h2>
+      <p>Execution → Evidence → Learning → Reusable Capability → Next Execution</p>
+      <div class="counters">
+        <span>Executions: <b id="c-exec">0</b></span>
+        <span>Evidence: <b id="c-ev">0</b></span>
+        <span>Learnings: <b id="c-learn">0</b></span>
+        <span>Capabilities: <b id="c-cap">0</b></span>
+      </div>
+    </section>
+
+    <!-- GOVERNANCE -->
+    <section class="card">
+      <h2>HUMAN GOVERNANCE</h2>
+      <p><b>Daniel — Strategic Authority</b></p>
+      <p><small>Final strategic decisions remain human-governed.</small></p>
+      <div class="gov-grid">
+        <div>AUREA<br>COORDINATES</div><div>SYSTEMS<br>EXECUTE</div>
+        <div>CONTROLS<br>VERIFY</div><div>EVIDENCE<br>PROVES</div>
+        <div>LEARNING<br>ACCUMULATES</div>
+      </div>
+    </section>
+
+    <!-- TRANSPARENCY -->
+    <section class="card">
+      <h2>REAL vs DEMONSTRATION</h2>
+      <h3>REAL NOW</h3>
+      <ul>
+        <li>Navegación web, Dashboard, Workflow local</li>
+        <li>Persistencia local, Evidence Ledger local, Learning Loop local</li>
+      </ul>
+      <h3>NEXT INTEGRATION</h3>
+      <ul>
+        <li>LLM real, Agentes reales, Backend, Base de conocimiento</li>
+        <li>Autenticación, Observabilidad, Despliegue productivo</li>
+      </ul>
+    </section>
+
+    <button id="reset-lab" class="danger">RESET LAB</button>
+  </main>
+
+  <script src="data/demo-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
